@@ -1,0 +1,30 @@
+# ROUTERS #
+
+- Post 
+	- Use localhost:3030/post/consulta para listar posts
+	- Use localhost:3030/post/cadastro para cadastrar post
+	- Use localhost:3030/post/remove/id_post para remover post
+	- Use localhost:3030/post/cadastro/id_post para atualizar post
+	- Use localhost:3030/post/view/id_post para visualizar post
+	- O parâmetros id_post é o id do post, chave-primária no banco
+- Autor 
+	- Use localhost:3030/author/consulta para listar autores
+	- Use localhost:3030/author/cadastro para cadastrar autor
+	- Use localhost:3030/author/remove/id_author para remover autor
+	- Use localhost:3030/author/cadastro/id_author para atualizar autor
+	- Use localhost:3030/author/view/id_author para visualizar autor
+	- O parâmetros id_author é o id do autor, chave-primária no banco
+- Categoria 
+	- Use localhost:3030/category/consulta para listar categorias
+	- Use localhost:3030/category/cadastro para cadastrar categoria
+	- Use localhost:3030/category/remove/id_category para remover categoria
+	- Use localhost:3030/category/cadastro/id_category para atualizar categoria
+	- Use localhost:3030/category/view/id_category para visualizar categoria
+	- O parâmetros id_category é o id da categoria, chave-primária no 
+- Sub Categoria 
+	- Use localhost:3030/sub_cat/consulta para listar sub-categorias
+	- Use localhost:3030/sub_cat/cadastro para cadastrar sub-categoria
+	- Use localhost:3030/sub_cat/remove/id_sub para remover sub-categoria
+	- Use localhost:3030/sub_cat/cadastro/id_sub para atualizar sub-categoria
+	- Use localhost:3030/sub_cat/view/id_sub para visualizar sub-categoria
+	- O parâmetros id_sub é o id da sub-categoria, chave-primária no banco

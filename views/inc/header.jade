@@ -1,0 +1,41 @@
+nav(class='navbar navbar-default')
+	div(class='container-fluid')
+		div(class='navbar-header')
+			button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+				span(class="sr-only") Toggle navigation
+				span(class="icon-bar")
+				span(class="icon-bar")
+				span(class="icon-bar")
+			a(class="navbar-brand") SejaSpotChallenge Project
+		div(id="navbar" class="navbar-collapse collapse")
+			ul(class="nav navbar-nav")
+				li(li class="active")
+					a(href="/") Home
+				li(class="dropdown")
+					a(class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") Postagens
+						span(class="caret")
+					ul(class="dropdown-menu")
+						li()
+							a(href="/post/cadastro") Cadastrar
+						li()
+							a(href="/post/consulta") Consultar
+				li(class="dropdown")
+					a(class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") Autores
+						span(class="caret")
+					ul(class="dropdown-menu")
+						li()
+							a(href="/author/cadastro") Cadastrar
+						li()
+							a(href="/author/consulta") Consultar
+				li(class="dropdown")
+					a(class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") Categoria
+						span(class="caret")
+					ul(class="dropdown-menu")
+						li()
+							a(href="/category/cadastro") Cadastrar
+						li()
+							a(href="/category/consulta") Consultar
+						li()
+							a(href="/sub_cat/cadastro") Cadastrar Sub
+						li()
+							a(href="/sub_cat/consulta") Consultar Sub

@@ -1,0 +1,4 @@
+.box-form{max-width: 500px; padding: 20px;}
+.post-title{font-size: 1.2em; font-weight: bold; text-align: center;}
+.view_cat {margin-bottom: 20px;}
+.view_cat ul li{list-style: none; background: rgba(0,0,0,0.2);color: #FFFFFF; font-weight: bold; margin: 2px; border-radius: 4px; padding: 5px}

@@ -1,0 +1,22 @@
+extends ../layout
+block content
+	div(class="box-form")
+		form(method='POST' , action='/sub_cat/'+ form +'/', role='form')
+			h1(class="post-title") #{title}
+			div(class="form-group")
+				label(for="Título") Nome
+				input(type="text" class="form-control" name="sub_name" value=subcat[0].sub_name placeholder="Escreva um nome para a sub categoria")
+				label(for="Postagem") Descrição
+				textarea(class="form-control" name="sub_desc" placeholder="Escreva sobre a sub categoria") #{subcat[0].sub_desc}
+				input(type="hidden" name="sub_id" value=subcat[0].sub_id)
+			if form === 'create'
+				button(type="submit" class="btn btn-primary pull-right") Cadastrar
+			else
+				button(type="submit" class="btn btn-primary pull-right") Atualizar
+	if erroValidator
+		div(class="box-form")
+			div(class="alert alert-danger")
+				- for (var i = 0; i < erroValidator.length; ++i) {
+					div #{erroValidator[0].msg}
+						a(href="#" class="close" data-dismiss="alert" aria-label="close") &times
+					- }

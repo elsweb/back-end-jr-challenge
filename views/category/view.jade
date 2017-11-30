@@ -1,0 +1,11 @@
+extends ../layout
+block content
+	div(class="col-md-12")
+		div(class="col-md-10")
+			div(class="card")
+				div(class="card-block")
+					h1(class="card-title") #{title}
+					p(class="card-text") #{category[0].category_desc}
+			a(class="btn btn-danger pull-left" href='/category/remove/#{category[0].category_id}') Apagar
+			&nbsp; &nbsp;
+			a(class="btn btn-primary" href='/category/cadastro/#{category[0].category_id}') Editar

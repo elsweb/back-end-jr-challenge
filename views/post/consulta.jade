@@ -1,0 +1,70 @@
+extends ../layout
+block content
+	div(class='row')
+		div(class='col-md-6')
+			form(class='form-inline' action='/post/consulta' method='GET' , role='form')
+				div(class='form-group')
+					if author.length > 0
+						label(for="Categoria") Autor &nbsp; &nbsp;
+						select(class='form-control' name='filter_author')
+							option
+								each ath in author
+									option(value='#{ath.author_id}') #{ath.author_name}
+					else
+						a(href="/author/cadastro" class='btn btn-success') Cadastrar Autor
+					&nbsp; &nbsp;
+					if cat.length > 0
+						label(for="Categoria") Categoria &nbsp; &nbsp;
+						select(class='form-control' name='filter_category')
+							option
+								each cats in cat
+									option(value='#{cats.category_id}') #{cats.category_name}
+					else
+						a(href="/category/cadastro" class='btn btn-success') Cadastrar Categoria
+					&nbsp; &nbsp;
+					if author.length > 0 || cat.length > 0
+						input(type='submit' value='Enviar' class='btn btn-success')
+	table(class="table table-responsive")
+		h1(class="post-title") #{title}
+		if posts.length > 0
+			thead(class="thead-inverse")
+				tr
+					th ID
+					th Título
+					th Autor
+					th Resumo
+					th Publicado
+					th Acessado
+					th 
+					th 
+					th 
+			tbody
+				each post in posts
+					tr
+						th(scope="row") #{post.post_id}
+						th #{post.post_title}
+						th #{post.author}
+						th(class="small2") #{post.post_content}
+						th #{moment(post.post_date).format('DD/MM/YYYY')}
+						if post.post_view
+							th(class="text-center") #{post.post_view}
+						else 
+							th(class="text-center") 0
+						th 
+							a(class="glyphicon glyphicon-eye-open" href='/post/view/#{post.post_id}')
+						th 
+							a(class="glyphicon glyphicon-edit" href='/post/cadastro/#{post.post_id}')
+						th
+							a(class="glyphicon glyphicon-trash" href='/post/remove/#{post.post_id}')
+			div(class='col-md-12 text-center')
+				if pg != 0
+					a(class="glyphicon glyphicon-chevron-left" href='?page=#{pg-1}')
+				a(class="glyphicon glyphicon-chevron-right" href='?page=#{pg+1}')
+			br
+			br
+		else
+			div(class='col-md-12 text-center')
+				a(class="glyphicon glyphicon-chevron-left" href='?page=#{pg-1}')
+				br
+				br
+				p(class='alert alert-info text-center') Nenhum registro encontrado

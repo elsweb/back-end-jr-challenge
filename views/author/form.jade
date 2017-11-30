@@ -1,0 +1,22 @@
+extends ../layout
+block content
+	div(class="box-form")
+		form(method='POST' , action='/author/'+ form +'/', role='form')
+			h1(class="post-title") #{title}
+			div(class="form-group")
+				label(for="Título") Nome
+				input(type="text" class="form-control" name="author_name" value=author[0].author_name placeholder="Escreva um título para a postagem")
+				label(for="Postagem") Descrição
+				textarea(class="form-control" name="author_desc" placeholder="Escreva sobre o post") #{author[0].author_desc}
+				input(type="hidden" name="author_id" value=author[0].author_id)
+			if form === 'create'
+				button(type="submit" class="btn btn-primary pull-right") Cadastrar
+			else
+				button(type="submit" class="btn btn-primary pull-right") Atualizar
+	if erroValidator
+		div(class="box-form")
+			div(class="alert alert-danger")
+				- for (var i = 0; i < erroValidator.length; ++i) {
+					div #{erroValidator[0].msg}
+						a(href="#" class="close" data-dismiss="alert" aria-label="close") &times
+					- }

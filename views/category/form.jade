@@ -1,0 +1,35 @@
+extends ../layout
+block content
+	div(class="box-form")
+		form(method='POST' , action='/category/'+ form +'/', role='form')
+			if sub_cat.length > 0
+				h1(class="post-title") #{title}
+				div(class="form-group")
+					label(for="Título") Nome
+					input(type="text" class="form-control" name="category_name" value=category[0].category_name placeholder="Escreva um nome para a categoria")
+					label(for="Sub Categoria") Sub Categoria
+					select(class="form-control" name="sub_id")
+						option
+						if sub_cat.length > 0
+							each scat in sub_cat
+								if form == 'update'
+									option(value=(category[0].sub_id == scat.sub_id ? category[0].sub_id : scat.sub_id) selected=(category[0].sub_name.toString() == scat.sub_name ? 'selected' : false)) #{scat.sub_name}
+								else
+									option(value=scat.sub_id) #{scat.sub_name}
+					label(for="Postagem") Descrição
+					textarea(class="form-control" name="category_desc" placeholder="Escreva sobre a categoria") #{category[0].category_desc}
+					input(type="hidden" name="category_id" value=category[0].category_id)
+				if form === 'create'
+					button(type="submit" class="btn btn-primary pull-right") Cadastrar
+				else
+					button(type="submit" class="btn btn-primary pull-right") Atualizar
+			else
+				p(class='alert alert-info text-center') Nenhuma sub categoria encontrado
+				a(href="/sub_cat/cadastro" class='btn btn-success') Cadastrar Sub Categoria
+	if erroValidator
+		div(class="box-form")
+			div(class="alert alert-danger")
+				- for (var i = 0; i < erroValidator.length; ++i) {
+					div #{erroValidator[0].msg}
+						a(href="#" class="close" data-dismiss="alert" aria-label="close") &times
+					- }

@@ -1,0 +1,11 @@
+extends ../layout
+block content
+	div(class="col-md-12")
+		div(class="col-md-10")
+			div(class="card")
+				div(class="card-block")
+					h1(class="card-title") #{title}
+					p(class="card-text") #{author[0].author_desc}
+			a(class="btn btn-danger pull-left" href='/author/remove/#{author[0].author_id}') Apagar
+			&nbsp; &nbsp;
+			a(class="btn btn-primary" href='/author/cadastro/#{author[0].author_id}') Editar

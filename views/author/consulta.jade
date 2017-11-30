@@ -1,0 +1,27 @@
+extends ../layout
+block content
+	table(class="table table-responsive")
+		h1(class="post-title") #{title}
+		if authors.length > 0
+			thead(class="thead-inverse")
+				tr
+					th ID
+					th Nome
+					th Descrição
+					th 
+					th 
+					th 
+			tbody
+				each author in authors
+					tr
+						th(scope="row") #{author.author_id}
+						th #{author.author_name}
+						th(class="small2") #{author.author_desc}
+						th 
+							a(class="glyphicon glyphicon-eye-open" href='/author/view/#{author.author_id}')
+						th 
+							a(class="glyphicon glyphicon-edit" href='/author/cadastro/#{author.author_id}')
+						th
+							a(class="glyphicon glyphicon-trash" href='/author/remove/#{author.author_id}')
+		else
+			p Nenhum registro encontrado

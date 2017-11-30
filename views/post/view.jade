@@ -1,0 +1,52 @@
+extends ../layout
+block content
+	div(class='row')
+		div(class="col-md-12")
+			div(class="col-md-10")
+				div(class="card")
+					div(class="card-block")
+						h1(class="card-title") #{title}
+						h4(class="card-title") Autor: #{author[0].author_name}
+						p(class="card-text") #{post[0].post_content}
+		if p_cat.length > 0
+			div(class='col-md-6 view_cat')
+				ul
+					each pc in p_cat
+						li(class='col-md-2 text-center') #{pc.category_name}					
+		div(class='col-md-12')
+			div(class='col-md-1')
+				a(class="btn btn-danger pull-left" href='/post/remove/#{post[0].post_id}') Apagar
+			div(class='col-md-1')
+				a(class="btn btn-primary" href='/post/cadastro/#{post[0].post_id}') Editar			
+	if cat.length > 0
+		br
+		div(class='row')
+			div(class='col-md-12')
+				div(class='col-md-12')
+					form(class='form-inline' action='/post/view/#{post[0].post_id}' method='POST' , role='form')
+						div(class='form-group')
+							label(for="Categoria") Categoria &nbsp; &nbsp;
+							select(class='form-control' name='category_id')
+								option
+								each c in cat
+									option(value=c.category_id) #{c.category_name}
+						input(type='hidden' name='post_id' value='#{post[0].post_id}')
+						&nbsp;
+						&nbsp;
+						div(class='form-group')
+							input(class='btn btn-success' type='submit' value='Adicionar')
+			if msg
+				br
+				br
+				div(class='col-md-6')
+					p(class='alert alert-info text-center') #{msg}
+	else
+		br
+		div(class='row')
+			div(class='col-md-6')
+				p(class='alert alert-info') Atenção detectamos que não existe categorias cadastradas.
+			br
+			br
+			br
+			div(class='col-md-12')
+				a(class="btn btn-success" href="/category/cadastro" role="button") Cadastre Aqui

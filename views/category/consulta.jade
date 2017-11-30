@@ -1,0 +1,29 @@
+extends ../layout
+block content
+	table(class="table table-responsive")
+		h1(class="post-title") #{title}
+		if categorys.length > 0
+			thead(class="thead-inverse")
+				tr
+					th ID
+					th Nome
+					th Sub Categoria
+					th Descrição
+					th 
+					th 
+					th 
+			tbody
+				each category in categorys
+					tr
+						th(scope="row") #{category.category_id}
+						th #{category.category_name}
+						th #{category.sub_name}
+						th(class="small2") #{category.category_desc}
+						th 
+							a(class="glyphicon glyphicon-eye-open" href='/category/view/#{category.category_id}')
+						th 
+							a(class="glyphicon glyphicon-edit" href='/category/cadastro/#{category.category_id}')
+						th
+							a(class="glyphicon glyphicon-trash" href='/category/remove/#{category.category_id}')
+		else
+			p Nenhum registro encontrado

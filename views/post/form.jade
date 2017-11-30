@@ -1,0 +1,35 @@
+extends ../layout
+block content
+	div(class="box-form")
+		form(method='POST' , action='/post/'+ form +'/', role='form')
+			if author.length > 0
+				h1(class="post-title") #{title}
+				div(class="form-group")
+					label(for="Autor") Autor
+					select(class="form-control" name="author_id")
+						option
+						if author.length > 0
+							each auth in author
+								if form == 'update'
+									option(value=(post[0].author_id == auth.author_id ? post[0].author_id : auth.author_id) selected=(post[0].author_name.toString() == auth.author_name ? 'selected' : false)) #{auth.author_name}
+								else
+									option(value=auth.author_id) #{auth.author_name}
+					label(for="Título") Título
+					input(type="text" class="form-control" name="post_title" value=post[0].post_title placeholder="Escreva um título para a postagem")
+					label(for="Postagem") Postagem
+					textarea(class="form-control" name="post_content" placeholder="Escreva sobre o post") #{post[0].post_content}
+					input(type="hidden" name="post_id" value=post[0].post_id)
+				if form === 'create'
+					button(type="submit" class="btn btn-primary pull-right") Cadastrar
+				else
+					button(type="submit" class="btn btn-primary pull-right") Atualizar
+			else
+				p(class='alert alert-info text-center') Nenhum Autor encontrado
+				a(href="/author/cadastro" class='btn btn-success') Cadastrar Autor
+	if erroValidator
+		div(class="box-form")
+			div(class="alert alert-danger")
+				- for (var i = 0; i < erroValidator.length; ++i) {
+					div #{erroValidator[0].msg}
+						a(href="#" class="close" data-dismiss="alert" aria-label="close") &times
+					- }

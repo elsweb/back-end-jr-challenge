@@ -1,0 +1,27 @@
+extends ../layout
+block content
+	table(class="table table-responsive")
+		h1(class="post-title") #{title}
+		if subcats.length > 0
+			thead(class="thead-inverse")
+				tr
+					th ID
+					th Nome
+					th Descrição
+					th 
+					th 
+					th 
+			tbody
+				each subcat in subcats
+					tr
+						th(scope="row") #{subcat.sub_id}
+						th #{subcat.sub_name}
+						th(class="small2") #{subcat.sub_desc}
+						th 
+							a(class="glyphicon glyphicon-eye-open" href='/sub_cat/view/#{subcat.sub_id}')
+						th 
+							a(class="glyphicon glyphicon-edit" href='/sub_cat/cadastro/#{subcat.sub_id}')
+						th
+							a(class="glyphicon glyphicon-trash" href='/sub_cat/remove/#{subcat.sub_id}')
+		else
+			p Nenhum registro encontrado
